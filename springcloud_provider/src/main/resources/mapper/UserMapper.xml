@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jk.mapper.UserMapper">
+    <select id="select"  resultType="com.jk.pojo.GoodsBean" >
+            select * from t_goods t
+            group by t.id
+    </select>
+    <delete id="delete" parameterType="String" >
+        delete from t_goods where id = #{id}
+    </delete>
+    <select id="selectGoodsById" resultType="com.jk.pojo.GoodsBean">
+        select * from t_goods where id = #{id}
+    </select>
+    <update id="update" parameterType="com.jk.pojo.GoodsBean">
+       update t_goods set name = #{name},count = #{count},price = #{price},producer = #{producer}
+       where id= #{id}
+    </update>
+    <insert id="save" parameterType="com.jk.pojo.GoodsBean">
+        insert into t_goods(name,count,price,producer) values(#{name},#{count},#{price},#{producer})
+    </insert>
+</mapper>
